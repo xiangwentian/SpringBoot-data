@@ -32,11 +32,13 @@ public class DataSource1Config {
 		bean.setDataSource(dataSource);
 		return bean.getObject();
 	}
+
 	@Bean(name="test1TransactionManager")//配置事务
 	@Primary
 	public DataSourceTransactionManager testTransactionManager(@Qualifier("test1DataSource") DataSource dataSource) {
 		return new DataSourceTransactionManager(dataSource);
 	}
+
 	@Bean(name="test1SqlSessionTemplate")
 	@Primary
 	public SqlSessionTemplate testSqlSessionTemplate(@Qualifier("test1SqlSessionFactory") SqlSessionFactory sqlSessionFactory) {
